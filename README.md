@@ -116,3 +116,24 @@ print(values[2])  # Output: 8
 This approach would require storing all 9,000,000 cubed values in memory at once, which could be very memory-intensive and slow.
 
 In summary, generators provide a powerful and efficient way to handle large sequences of data by generating values on the fly and using memory only as needed.
+
+## Argument Parsing
+
+Argument parsing is the process of extracting information from command-line arguments and options. It allows you to create scripts that can be run from the terminal or command prompt with various inputs and configurations. Python provides several libraries for argument parsing, including `argparse`, `getopt`, and `optparse`.
+
+### Benefits of Argument Parsing:
+
+1. **Flexibility**: It allows you to define the structure of command-line arguments and options in a flexible and customizable way.
+
+2. **Readability**: It makes your script more user-friendly and easier to understand by allowing users to specify inputs and configurations without having to read and understand the script's code.
+
+3. **Automation**: It allows you to create scripts that can be automated and integrated into larger workflows, such as build processes or deployment pipelines.
+
+4. **Portability**: It makes your script more portable, as it can be run on different systems with different configurations without requiring changes to the script itself.
+
+### Example:
+
+A simple example to illustrate the use of `argparse`: [1_argparse.py](argument_parsing/1_argparse.py)
+
+A simple example to illustrate the use of `getopt`: [2_getopt.py](argument_parsing/2_getopt.py)
+
