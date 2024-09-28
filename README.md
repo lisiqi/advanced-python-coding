@@ -137,3 +137,40 @@ A simple example to illustrate the use of `argparse`: [1_argparse.py](argument_p
 
 A simple example to illustrate the use of `getopt`: [2_getopt.py](argument_parsing/2_getopt.py)
 
+## Encapsulation
+Encapsulation in Python is a fundamental concept in object-oriented programming that restricts direct access to some of an object's components, which can prevent the accidental modification of data. It is achieved using private attributes and methods, and providing public methods to access and modify them.
+
+### Example
+
+```python:encapsulation/encapsulation.py
+class Person:
+    def __init__(self, name, age):
+        self.__name = name  # private attribute
+        self.__age = age    # private attribute    
+    
+    @property  # getter
+    def Name(self):
+        return self.__name
+    
+    @Name.setter  # setter
+    def Name(self, value):
+        self.__name = value
+    
+    @staticmethod  # static method: a method that is bound to the class, not the instance
+    def mymethod():  # no need to use self
+        print("Hello")
+
+Person.mymethod()  # Calling static method directly from the class
+    
+p1 = Person("John", 20)
+print(p1.Name)  # Accessing private attribute via getter
+p1.Name = "Jane"  # Modifying private attribute via setter
+print(p1.Name)  # Accessing modified private attribute via getter
+```
+
+**Key Points:**
+- **Private Attributes**: Use double underscores to make attributes private.
+- **Getter and Setter**: Use `@property` and `@<property>.setter` to control access and modification of private attributes.
+- **Static Method**: Use `@staticmethod` for methods that do not need access to instance or class attributes.
+
+Encapsulation helps in maintaining the integrity of the data by providing controlled access and modification mechanisms.
