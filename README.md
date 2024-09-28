@@ -2,6 +2,12 @@
 
 Part of the content is based on the Youtube channel @NeuralNine 
 
+Python depencies are managed with `poetry` in this repository. To install the dependencies, run the following command:
+
+```sh
+poetry install
+```   
+
 ## Decorators
 A decorator in Python is a design pattern that allows you to modify the behavior of a function or method without changing its actual code. Decorators are typically used to add functionality to existing functions in a clean and readable way.
 
@@ -174,3 +180,93 @@ print(p1.Name)  # Accessing modified private attribute via getter
 - **Static Method**: Use `@staticmethod` for methods that do not need access to instance or class attributes.
 
 Encapsulation helps in maintaining the integrity of the data by providing controlled access and modification mechanisms.
+
+## Type Hinting
+
+Type hinting in Python is a feature that allows you to specify the expected type of an argument, return value, or attribute in a variable or function. It helps with code readability, maintainability, and can also be used by IDEs and static analysis tools like mypy to provide better error checking and suggestions. However, Python does not enforce type hints at runtime, meaning that type hints are primarily for documentation and tooling purposes.
+
+### Benefits of Type Hinting
+
+1. **Readability**: It makes the code more readable by clearly indicating the expected types of variables and parameters.
+
+2. **Error Detection**: It can help detect type-related errors at an early stage, such as passing the wrong type of argument to a function.
+
+3. **IDE Support**: IDEs can provide better code completion, type checking, and error detection based on the type hints.
+
+4. **Static Analysis**: Static analysis tools can use type hints to perform more accurate analysis and provide more useful suggestions for code improvements.
+
+### Example
+Here's a breakdown of my [example code](type_hinting/type_hinting.py) with explanations:
+
+```python:type_hinting/type_hinting.py
+def myfunction(myparameter: int):
+    print(myparameter)
+
+myfunction(1)  # prints 1
+myfunction("Hello")  # prints Hello # no error
+```
+
+- **Type Hinting for Parameters**: The function `myfunction` expects an integer (`int`) as its parameter. However, Python does not enforce this, so passing a string ("Hello") does not raise an error at runtime.
+
+```python:type_hinting/type_hinting.py
+def myfunction2(myparameter: int) -> int:
+    return myparameter + 1
+
+print(myfunction2(1))  # prints 2
+```
+
+- **Type Hinting for Return Values**: The function `myfunction2` expects an integer parameter and indicates that it will return an integer (`-> int`). This helps with understanding what type of value the function should return.
+
+```python:type_hinting/type_hinting.py
+def otherfunction(otherparameter: str):
+    print(otherparameter)
+
+otherfunction(myfunction2(20))  # prints 21
+```
+
+- **Type Compatibility**: The function `otherfunction` expects a string parameter. When calling `otherfunction(myfunction2(20))`, `myfunction2(20)` returns `21`, which is an integer. This works because `print` can handle integers, but it might not be the intended use.
+
+```python:type_hinting/type_hinting.py
+print(myfunction2("Hello"))  # TypeError: can only concatenate str (not "int") to str
+```
+
+- **Type Error**: Here, `myfunction2("Hello")` raises a `TypeError` because the function tries to add `1` to a string, which is not allowed. This error occurs at runtime, not because of type hinting, but because of the operation inside the function.
+
+### Key Points about Type Hinting:
+1. **Syntax**:
+    - For parameters: `def function_name(param: type):`
+    - For return values: `def function_name(param) -> return_type:`
+
+2. **Static Type Checking**:
+    - Tools like `mypy` can be used to check type hints and catch type-related errors before runtime.
+
+3. **Documentation**:
+    - Type hints improve code readability and help other developers understand the expected types.
+
+4. **No Runtime Enforcement**:
+    - Python does not enforce type hints at runtime. They are purely for documentation and tooling.
+
+### Example with Type Checking:
+To enforce type checking, you can use a tool like `mypy`. First, install it:
+
+```sh
+poetry add mypy
+```
+
+Then, run it on your script:
+
+```sh
+poetry run mypy type_hinting.py
+```
+
+This will report any type inconsistencies based on the type hints provided.
+
+Output:
+
+```
+type_hinting.py:6: error: Argument 1 to "myfunction" has incompatible type "str"; expected "int"  [arg-type]
+type_hinting.py:16: error: Argument 1 to "otherfunction" has incompatible type "int"; expected "str"  [arg-type]
+type_hinting.py:19: error: Argument 1 to "myfunction2" has incompatible type "str"; expected "int"  [arg-type]
+Found 3 errors in 1 file (checked 1 source file)
+```
+
