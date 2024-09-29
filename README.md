@@ -454,7 +454,7 @@ The **Decorator** and **Proxy** design patterns both belong to the *structural* 
 
 The **Singleton Design Pattern** is a ***creational*** design pattern that ensures a class has only one instance and provides a global point of access to it. It is useful when you need to ensure that a class has a single, shared instance that is accessible globally.
 
-### Benefits of the Singleton Design Pattern
+**Benefits of the Singleton Design Pattern**
 
 1. **Ensures a Single Instance**: It guarantees that a class has only one instance and provides a global point of access to it.
 
@@ -464,6 +464,22 @@ The **Singleton Design Pattern** is a ***creational*** design pattern that ensur
 
 4. **Encapsulation**: It encapsulates the object creation logic, making it easier to modify and extend.
 
-### Example
+**Example**
 
 A simple example to illustrate the use of the singleton design pattern: [singleton.py](design_pattern_singleton/singleton.py)
+
+# Composite Design Pattern
+
+The **Composite Design Pattern** is a ***structural*** design pattern that allows you to compose objects into tree structures to represent part-whole hierarchies. It lets clients treat individual objects and compositions of objects uniformly.
+
+**Benefits of the Composite Design Pattern**
+
+1. **Uniformity**: It allows you to treat individual objects and compositions of objects uniformly. This means that you can write code that works with both simple objects and complex objects that contain other objects, without needing to know the difference between them.
+
+2. **Flexibility**: It provides a flexible way to structure and manipulate hierarchical data, such as file systems, organization charts, or menus.
+
+3. **Extensibility**: It allows you to add new types of objects to the hierarchy without modifying the existing code.
+
+**Example**
+
+A simple example to illustrate the use of the composite design pattern: [composite.py](design_pattern_composite/composite.py)
