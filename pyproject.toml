@@ -10,6 +10,7 @@ packages = [{include = "advanced_python_coding"}]
 python = "^3.11"
 jupyter = "^1.1.1"
 mypy = "^1.11.2"
+pandas = "^2.2.3"
 
 
 [build-system]

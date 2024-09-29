@@ -270,3 +270,183 @@ type_hinting.py:19: error: Argument 1 to "myfunction2" has incompatible type "st
 Found 3 errors in 1 file (checked 1 source file)
 ```
 
+## Factory Design Pattern
+
+The factory design pattern is a ***creational*** design pattern that provides an interface for creating objects in a superclass or **base class**, but allows subclasses to alter the type of objects that will be created. It is useful when you want to encapsulate the object *creation* logic and provide a way to create objects without specifying the exact class of object that will be created.
+
+### Benefits of the Factory Design Pattern
+
+1. **Encapsulation**: It encapsulates the object creation logic, making it easier to modify and extend.
+
+2. **Flexibility**: It allows for the creation of new types of objects without modifying the existing code.
+
+3. **Code Reusability**: It promotes code reusability by encapsulating the object creation logic in a single place.
+
+4. **Decoupling**: It decouples the client code from the object creation logic, making it easier to change the object creation logic without affecting the client code.
+
+### Example 1: Simple Factory
+
+Here's a simple example to illustrate the factory design pattern:
+
+```python:factory_design_pattern/factory.py
+class Animal:
+    def make_sound(self):
+        pass
+
+class Dog(Animal):
+    def make_sound(self):
+        return "Woof!"
+
+class Cat(Animal):
+    def make_sound(self):
+        return "Meow!"
+
+class AnimalFactory:
+    def get_animal(self, animal_type):
+        if animal_type == "dog":
+            return Dog()
+        elif animal_type == "cat":
+            return Cat()
+        else:
+            raise ValueError("Invalid animal type")
+
+factory = AnimalFactory()
+dog = factory.get_animal("dog")
+cat = factory.get_animal("cat")
+
+print(dog.make_sound())  # Output: Woof!
+print(cat.make_sound())  # Output: Meow!
+```
+
+**Key Points**:
+1. **Factory Class**: The `AnimalFactory` class encapsulates the logic for creating different types of `Animal` objects.
+2. **Subclasses**: The `Dog` and `Cat` classes are subclasses of `Animal` and implement the `make_sound` method.
+3. **Client Code**: The client code (main part of the code) uses the factory to create `Animal` objects without specifying the exact class of object that will be created.
+
+This pattern helps in creating objects in a flexible and extensible way, making it easier to manage and modify the object creation logic.
+
+### Example 2: Abstract Factory using ABCs and Interfaces
+
+Another example using abstruct base classes (ABCs) from `abc` and interfaces: [factory.py](design_pattern_factory/factory.py)
+
+Abstract base classes provide a blueprint for other classes to inherit from, enforcing that derived classes implement certain methods.
+
+Here are the key advantages:
+
+1. **Enforces Implementation**:
+   - By using `abstractmethod`, you define methods that must be implemented by any subclass. This helps ensure that certain functionality is provided by all subclasses, making your code more structured and predictable.
+
+2. **Promotes Interface-Like Behavior**:
+   - Abstract base classes can be used similarly to interfaces in other programming languages. They define a set of methods that derived classes should implement, without providing an implementation for these methods themselves.
+
+3. **Encourages Consistent APIs**:
+   - When multiple subclasses inherit from an abstract base class, they are forced to have the same interface (methods). This consistency is useful when you need to ensure that different objects can be used interchangeably, such as in polymorphism.
+
+4. **Enables Abstract Classes**:
+   - Using `ABCMeta` allows you to create classes that cannot be instantiated directly. This is useful when the class serves only as a blueprint and should never be used on its own without being subclassed.
+
+
+# Proxy Design Pattern
+
+The proxy design pattern is a ***structural*** design pattern that provides a surrogate or placeholder for another object to control access to it. It is useful when you want to add additional functionality to an object without changing its interface.
+
+**Benefits of the Proxy Design Pattern**
+
+1. **Control Access**: It allows you to control access to an object by adding additional functionality before or after the object's methods are called.
+
+2. **Lazy Initialization**: It can be used to delay the creation of an object until it is actually needed, which can improve performance and memory usage.
+
+**Example**
+
+A simple example to illustrate the use of the proxy design pattern: [proxy.py](design_pattern_proxy/proxy.py)
+
+## Decorator vs Proxy
+The **Decorator** and **Proxy** design patterns both belong to the *structural* design pattern family and can involve wrapping an object to provide additional functionality. However, they serve different purposes and have distinct usage scenarios. Here’s a breakdown of the key differences:
+
+### 1. **Purpose**
+
+- **Decorator Pattern**:
+  - **Adds behavior dynamically**: The primary purpose of the decorator pattern is to **add additional behavior or functionality** to an object dynamically without modifying the object itself or affecting other objects from the same class.
+  - It enhances the behavior of the object at runtime, allowing for flexible and scalable functionality additions by stacking multiple decorators.
+  
+- **Proxy Pattern**:
+  - **Controls access to the object**: The proxy pattern is used to provide a **surrogate or placeholder** for another object to control access to it. It manages and controls interactions with the actual object, often providing additional functionality like lazy loading, logging, access control, or caching.
+  - The proxy object represents the real object and manages its lifecycle or access.
+
+### 2. **Usage Scenarios**
+
+- **Decorator Pattern**:
+  - When you need to **dynamically extend** the behavior of objects in a flexible manner without using inheritance.
+  - Often used when behavior can be layered (i.e., you can apply one or more decorators to an object in a chain-like fashion).
+  - For example, adding functionality like logging, monitoring, or validation to specific instances of objects.
+
+- **Proxy Pattern**:
+  - When you need to **control access** to an object or add functionality related to the object’s lifecycle.
+  - It’s used in cases where direct access to the object needs to be managed, e.g., for security reasons, resource management, or when dealing with expensive resources like database connections or remote services.
+  - Example scenarios include caching objects, controlling access to sensitive resources, or delaying object creation (lazy initialization).
+
+### 3. **Relationship with the Object**
+
+- **Decorator Pattern**:
+  - **Wraps** the object and **extends** its behavior without changing its interface. The decorator has the same interface as the object it decorates and can replace it transparently.
+  - Multiple decorators can be combined to add multiple layers of functionality.
+
+- **Proxy Pattern**:
+  - **Mediates access** to the object. It acts as a **stand-in** for the object, controlling the interactions and sometimes pre-processing or post-processing requests before passing them on to the actual object.
+  - The proxy provides the same interface as the real object, but typically, its main role is not to add behavior but to **restrict, optimize, or defer** access to the object.
+
+### 4. **Real-Life Analogies**
+
+- **Decorator Pattern**: 
+  - Think of adding accessories to a car or layers of clothing. You can add as many accessories or layers as you want, and they each augment the car's or person's appearance and functionality.
+  - Example: Adding functionality like a sunroof, GPS system, or heated seats to a basic car without modifying the car itself.
+
+- **Proxy Pattern**:
+  - Think of a security guard in front of a door. You need to pass through the guard to get to the room. The guard may check your credentials or provide logging, but the main purpose is to control your access to the room.
+  - Example: A bank ATM machine acts as a proxy to your bank account, controlling access to funds.
+
+### 5. **Diagram Structure**
+
+- **Decorator**:
+  - Decorator class holds a reference to the same interface as the object it decorates, and it adds behavior before or after delegating the work to the object.
+  ```
+  +---------------+           +---------------+
+  |  Component    |<----------|  Decorator    |
+  +---------------+           +---------------+
+        /\                            /\
+        |                            ( )
+        |                           Target
+  +---------------+  
+  |  Concrete     |  
+  |  Component    |  
+  +---------------+  
+  ```
+
+- **Proxy**:
+  - Proxy class also holds a reference to the real object but usually performs some operations (e.g., security checks, caching, logging) before or after delegating requests to the real object.
+  ```
+  +-------------+  
+  |  Client     |  
+  +-------------+  
+        |         
+        v  
+  +-------------+  
+  |   Proxy     |  
+  +-------------+  
+        |         
+        v  
+  +-------------+  
+  |  RealObject |  
+  +-------------+  
+  ```
+
+### Summary of Differences:
+
+| **Aspect**               | **Decorator Pattern**                                        | **Proxy Pattern**                                              |
+|--------------------------|--------------------------------------------------------------|----------------------------------------------------------------|
+| **Purpose**               | Adds new behavior or responsibilities to objects dynamically | Controls access to the real object or adds auxiliary behavior  |
+| **Main Focus**            | Enhances the object’s functionality                          | Manages or restricts access to the object                       |
+| **When to Use**           | When you want to add or extend behavior at runtime           | When you need to control access, handle expensive resources, or add a level of indirection |
+| **Implementation**        | Wraps the object and adds behavior                           | Acts as a stand-in to the real object                           |
+| **Example**               | Adding features like logging, validation, caching            | Proxy for remote objects, logging, access control               |
+
