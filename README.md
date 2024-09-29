@@ -1,6 +1,10 @@
 # Advanced Python Coding
 
-Part of the content is based on the Youtube channel @NeuralNine 
+Some basic python coding techniques can be found in the [notebooks](notebooks) folder.
+
+Advanced python coding part in this repository is partially based on the Youtube channel [NeuralNine](https://www.youtube.com/watch?v=KSiRzuSx120&list=PL7yh-TELLS1FuqLSjl5bgiQIEH25VEmIc).
+
+Besides the design patterns covered in the repository, there is a more comprehensive list of design patterns [here](https://refactoring.guru/design-patterns). A quick overview of different design patterns are summarized in a seperate markdown file [here](design_patterns.md).
 
 Python depencies are managed with `poetry` in this repository. To install the dependencies, run the following command:
 
@@ -8,7 +12,10 @@ Python depencies are managed with `poetry` in this repository. To install the de
 poetry install
 ```   
 
-Besides the design patterns covered in the repository, there is a more comprehensive list of design patterns [here](https://refactoring.guru/design-patterns). A quick overview of different design patterns are summarized [here](design_patterns.md).
+Run a python file with command:
+```sh
+poetry run python <file_name>.py
+``` 
 
 ## Dunder Methods
 
