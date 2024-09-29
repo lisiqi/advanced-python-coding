@@ -4,6 +4,7 @@ def infinite_sequence():
         yield num
         num += 5
 
+
 values = infinite_sequence()
 for i in range(100):
     print(next(values))

@@ -1,8 +1,8 @@
-import sys
 import getopt
+import sys
 
-filename = "test.txt" # default values
-message = "Hello" # default values
+filename = "test.txt"  # default values
+message = "Hello"  # default values
 
 opts, args = getopt.getopt(sys.argv[1:], "f:m:", ["filename", "message"])
 print(opts)
@@ -33,7 +33,7 @@ with open(filename, "w") as file:
 ## []  # args
 # Default value of filename is used
 
-# Command: poetry run python 2_getopt.py 
+# Command: poetry run python 2_getopt.py
 # Output:
 ## []  # opts
 ## []  # args

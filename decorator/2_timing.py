@@ -2,6 +2,7 @@
 
 import time
 
+
 def timed(function):
     def wrapper(*args, **kwargs):
         before = time.time()
@@ -10,11 +11,14 @@ def timed(function):
         fname = function.__name__
         print(f"{fname} took {after - before} seconds to execute!")
         return value
+
     return wrapper
+
 
 @timed
 def add(x, y):
     time.sleep(2)
-    return x+y
+    return x + y
+
 
 print(add(1, 2))
