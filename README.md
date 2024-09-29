@@ -10,6 +10,12 @@ poetry install
 
 Besides the design patterns covered in the repository, there is a more comprehensive list of design patterns [here](https://refactoring.guru/design-patterns). A quick overview of different design patterns are summarized [here](design_patterns.md).
 
+## Dunder Methods
+
+Dunder methods in Python are special methods that have double underscores at the beginning and end of their names. They are also known as magic methods or special methods. Dunder methods are used to implement the behavior of built-in operations or functions on objects.
+
+Examples: [dunder.py](dunder/dunder.py)
+
 ## Decorators
 A decorator in Python is a design pattern that allows you to modify the behavior of a function or method without changing its actual code. Decorators are typically used to add functionality to existing functions in a clean and readable way.
 
