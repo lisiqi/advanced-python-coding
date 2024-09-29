@@ -450,3 +450,20 @@ The **Decorator** and **Proxy** design patterns both belong to the *structural* 
 | **Implementation**        | Wraps the object and adds behavior                           | Acts as a stand-in to the real object                           |
 | **Example**               | Adding features like logging, validation, caching            | Proxy for remote objects, logging, access control               |
 
+# Singleton Design Pattern
+
+The **Singleton Design Pattern** is a ***creational*** design pattern that ensures a class has only one instance and provides a global point of access to it. It is useful when you need to ensure that a class has a single, shared instance that is accessible globally.
+
+### Benefits of the Singleton Design Pattern
+
+1. **Ensures a Single Instance**: It guarantees that a class has only one instance and provides a global point of access to it.
+
+2. **Global Access**: It provides a global point of access to the instance, which can be useful when you need to ensure that all parts of the system access the same instance.
+
+3. **Lazy Initialization**: It can be used to delay the creation of an object until it is actually needed, which can improve performance and memory usage.
+
+4. **Encapsulation**: It encapsulates the object creation logic, making it easier to modify and extend.
+
+### Example
+
+A simple example to illustrate the use of the singleton design pattern: [singleton.py](design_pattern_singleton/singleton.py)
