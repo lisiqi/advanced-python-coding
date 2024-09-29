@@ -8,6 +8,8 @@ Python depencies are managed with `poetry` in this repository. To install the de
 poetry install
 ```   
 
+Besides the design patterns covered in the repository, there is a more comprehensive list of design patterns [here](https://refactoring.guru/design-patterns). A quick overview of different design patterns are summarized [here](design_patterns.md).
+
 ## Decorators
 A decorator in Python is a design pattern that allows you to modify the behavior of a function or method without changing its actual code. Decorators are typically used to add functionality to existing functions in a clean and readable way.
 
@@ -483,3 +485,4 @@ The **Composite Design Pattern** is a ***structural*** design pattern that allow
 **Example**
 
 A simple example to illustrate the use of the composite design pattern: [composite.py](design_pattern_composite/composite.py)
+
